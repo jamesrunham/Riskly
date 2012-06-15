@@ -1,0 +1,138 @@
+﻿body {
+    font-family: arial, helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height:  100%;
+    background-color: #555555;
+    /*background-color: rgba(67, 110, 238, 0.3);*/
+}
+
+.page {
+    padding: 20px;
+    margin: 0px 200px;
+    background-color: #8E8E8E;
+}
+
+header, #header {
+    position: relative;
+    color: #ffffff;
+    padding: 0;
+    display: block;
+}
+
+ul#menu {
+    padding: 0 0 2px;
+    position: relative;
+    margin: 0;
+    text-align: right;
+}
+
+ul#menu li {
+    display: inline;
+    list-style: none;
+    margin-right: 20px;
+}
+
+#title h1 {
+    padding: 20px;
+    text-align: center; 
+}
+
+#logindisplay {
+    margin-right: 20px;
+    text-align: right;
+}
+
+#homepageTitle{
+    text-align: center;
+}
+
+#headerTitle {
+    text-decoration: none;
+    color: rgba(67, 110, 238, 0.3);
+    font-size: 60px;   
+}
+
+#homePagePanel {
+    margin-left: 40px;
+    background-color: rgba(67, 110, 238, 0.3);
+    width: 230px;
+}
+
+#log {
+    text-align: center;
+    color: #436EEE;
+    font-style: oblique;
+}
+
+#infovis {
+   height: 2500px;
+   width: 2000px;
+   margin: auto;    
+}
+
+.homepageAnchor  {
+    text-decoration: none;
+    color: inherit;
+    font-size: 20px;
+}
+
+.homepageAnchor:hover {
+    color: #68228B;
+}
+
+.nodeName {
+    font-weight: 700;
+}
+
+#homePagePanel {
+    border: rgba(255,255,255, 0.5);
+    border-radius: 15px;
+    border-width: 5px;
+    border-style: solid;
+    box-shadow: 5px 6px 18px #000000;
+    padding: 10px;  
+}
+
+.datepicker {
+    display: inline;
+}
+
+.datepickerLabel, #iterationLabel, #path {
+    display: inline;
+    font-size: 12px;
+    margin-left: 3px;
+}
+#iterationNo {
+    margin-left: 14px;
+}
+
+#pathType {
+    margin-left: 34px;
+}
+
+#depth {
+    margin-left: 9px;
+}
+
+#releaseDateTo {
+    margin-left: 14px;    
+}
+
+#showMap, #clearButton {
+    margin-top: 14px;
+    background: rgba(0,0,255,0.2);
+    border-radius: 15px;
+    border-width: 2px;
+}
+
+.radioLabel, #errorMessage {
+    font-size: 12px;
+}
+
+.node {
+    color: purple;
+    font-size: 200px;
+}
+
