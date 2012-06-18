@@ -36,7 +36,8 @@
             Edge: {
                 type: 'bezier',
                 overridable: true,
-                lineWidth: 3
+                lineWidth: 3,
+                epsilon: 10
             },
 
             //This method is called on DOM label creation.

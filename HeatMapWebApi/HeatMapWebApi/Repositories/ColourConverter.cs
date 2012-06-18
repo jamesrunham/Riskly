@@ -18,7 +18,7 @@ namespace HeatMapWebApi.Repositories
                 throw new ArgumentOutOfRangeException("nodeCheckins cannot be higher than totalCheckins");
 
             //formula to create parabolic gradient, which distributes the colour
-            Percentage = Math.Pow(((nodeCheckins / (double)totalCheckins)), 1.0 / 4) * 100;
+            Percentage = ParaCalculator(totalCheckins,nodeCheckins, 4) * 100;
 
             double colourDifference = byte.MaxValue * (Percentage / 100);
             double red;
@@ -51,9 +51,14 @@ namespace HeatMapWebApi.Repositories
             {
                 var colours = new ColourConverter();
                 child.data.colourHex = colours.GetColour(checkins, child.data.checkins).Substring(2, 6);
-                child.data.percentage = Math.Pow(((child.data.checkins / (double)checkins)), 1.0 / 5.5)*150;
+                child.data.percentage = ParaCalculator(checkins, child.data.checkins, 5.5)*150; //Math.Pow(((child.data.checkins / (double)checkins)), 1.0 / 5.5)*150;
                 ChildColours(child, checkins);
             }
+        }
+
+        private static double ParaCalculator(int totalCheckins, int childCheckins, double root)
+        {
+            return Math.Pow(((childCheckins / (double)totalCheckins)), 1.0 / root);
         }
     }
 }
