@@ -1,4 +1,14 @@
-﻿function initHT(container, dates, iterationType, path, depth) {
+﻿var Log = {
+    elem: false,
+    write: function (text) {
+        if (!this.elem)
+            this.elem = document.getElementById('log');
+        this.elem.innerHTML = text;
+        this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
+    }
+};
+
+function initHT(container, dates, iterationType, path, depth) {
     $.getJSON('/heatmap', { pathContains: path, iteration: iterationType, depth: depth }, function (response) {
         var json = response;
         console.log(response);
@@ -40,6 +50,16 @@
                 epsilon: 10
             },
 
+           
+            Tree : {
+                orientation: "right",
+                subtreeOffset: 100,
+                siblingOffset: 200,
+                indent: 10,
+                multitree: false,
+                align: "center"
+            },
+
             //This method is called on DOM label creation.
             //Use this method to add event handlers and styles to
             //your node.
@@ -73,7 +93,7 @@
                 console.log(node.data.percentage);
 
                 if (node.data.isFolder = true) {
-                    node.data.border = 200;
+                    node.data.$border = 200;
                 }
             },
 
@@ -97,6 +117,10 @@
             Navigation: {
                 enable: true,
                 panning: true
+            },
+            
+            onAfterCompute :  function (){
+                Log.write("Code changes between " + dates.dateFrom + ' - '  + dates.dateTo);  
             }
 
         });
@@ -121,3 +145,89 @@ function Clear(domElements) {
     }
 }
 
+
+var initTree = function (container, dates, iterationType, path, depth) {
+    $.getJSON('/heatmap', { pathContains: path, iteration: iterationType, depth: depth }, function(response) {
+        var json = response;
+
+        var ht = new $jit.Hypertree({
+        //id of the visualization container  
+            injectInto: 'infovis',
+            //canvas width and height  
+            width: 3000,
+            height: 4000,
+            //Change node and edge styles such as  
+            //color, width and dimensions.  
+            Node: {
+                dim: 9,
+                color: "#f00"
+            },
+            Edge: {
+                lineWidth: 2,
+                color: "#088"
+            },
+            onBeforeCompute: function(node) {
+                Log.write("centering");
+            },
+            //Attach event handlers and add text to the  
+            //labels. This method is only triggered on label  
+            //creation  
+            onCreateLabel: function(domElement, node) {
+                domElement.innerHTML = node.name;
+                $jit.util.addEvent(domElement, 'click', function() {
+                    ht.onClick(node.id, {
+                        onComplete: function() {
+                            ht.controller.onComplete();
+                        }
+                    });
+                });
+            },
+            //Change node styles when labels are placed  
+            //or moved.  
+            onPlaceLabel: function(domElement, node) {
+                var style = domElement.style;
+                style.display = '';
+                style.cursor = 'pointer';
+                if (node._depth <= 1) {
+                    style.fontSize = "0.8em";
+                    style.color = "#ddd";
+
+                } else if (node._depth == 2) {
+                    style.fontSize = "0.7em";
+                    style.color = "#555";
+
+                } else {
+                    style.display = 'none';
+                }
+
+                var left = parseInt(style.left);
+                var w = domElement.offsetWidth;
+                style.left = (left - w / 2) + 'px';
+            },
+
+            onComplete: function() {
+                Log.write("done");
+
+                //Build the right column relations list.  
+                //This is done by collecting the information (stored in the data property)   
+                //for all the nodes adjacent to the centered node.  
+                var node = ht.graph.getClosestNodeToOrigin("current");
+                var html = "<h4>" + node.name + "</h4><b>Connections:</b>";
+                html += "<ul>";
+                node.eachAdjacency(function(adj) {
+                    var child = adj.nodeTo;
+                    if (child.data) {
+                        var rel = (child.data.band == node.name) ? child.data.relation : node.data.relation;
+                        html += "<li>" + child.name + " " + "<div class=\"relation\">(relation: " + rel + ")</div></li>";
+                    }
+                });
+                html += "</ul>";
+                $jit.id('inner-details').innerHTML = html;
+            }
+        });
+        //load JSON data.  
+        ht.loadJSON(json);
+        //compute positions and plot.  
+        ht.refresh();
+    });
+};

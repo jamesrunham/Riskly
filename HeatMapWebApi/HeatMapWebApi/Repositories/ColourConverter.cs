@@ -20,7 +20,7 @@ namespace HeatMapWebApi.Repositories
             //formula to create parabolic gradient, which distributes the colour
             Percentage = ParaCalculator(totalCheckins,nodeCheckins, 4) * 100;
 
-            double colourDifference = byte.MaxValue * (Percentage / 100);
+            var colourDifference = byte.MaxValue * (Percentage / 100);
             double red;
             double green;
 
