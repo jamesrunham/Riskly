@@ -11,7 +11,7 @@
         var path = $("#pathType").val() != "" ? $("#pathType").val() : "Reed";
         var depth = $("#depth").val() != "" ? $("#depth").val() : 100;
         //initHT('infovis', dates, iteration, path, depth);
-        initTree('infovis', dates, iteration, path, depth);
+        initHT('infovis', dates, iteration, path, depth);
 
         $('#clearButton').show('fade');
     });
