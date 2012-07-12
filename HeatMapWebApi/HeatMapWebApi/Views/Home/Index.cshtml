@@ -6,38 +6,43 @@
 <link href="@Url.Content("~/Content/themes/base/jquery.ui.datepicker.css")" rel="stylesheet"type="text/css" />
 
 
-<section id="homePagePanel">
-    <div>
-        <label for="releaseDateFrom" class="datepickerLabel">Date From:</label>
-        <input placeholder="enter start date" type="text" id="releaseDateFrom" class="datepicker"/>
+<div class="row">
+    <div class="span3">
+        <div class="well">
+            <ul class="nav nav-list">
+                <li>
+                    <label for="releaseDateFrom" class="datepickerLabel">Date From:</label>
+                    <input placeholder="enter start date" type="text" id="releaseDateFrom" class="datepicker"/>
+                </li>
+                <li id="dateToDiv">
+                    <label for="releaseDateTo" class="datepickerLabel">Date To:</label>
+                    <input placeholder="enter end date" type="text" id="releaseDateTo" class="datepicker"/>
+                </li>
+                <li id="iteration">
+                    <label for="iterationNo" id="iterationLabel">Iteration:</label>
+                    <input placeholder="iteration (e.g. Trunk)" type="text" id="iterationNo"/>
+                </li>
+                <li id="path">
+                    <label for="pathType" id="pathLabel">Path:</label>
+                    <input placeholder="environment(e.g. Reed)" type="text" id="pathType"/>
+                </li>
+                <li>
+                    <label for="depth" id="depthLabel">Checkins:</label>
+                    <input placeholder="checkins(e.g. 100)" type="text" id="depth"/>
+                </li>
+                <li>
+                    <button id="showMap" class="btn"><i class="icon-warning-sign"></i> Show Map</button>
+                    <button id="clearButton" class="btn">Clear</button>  
+                </li>
+            </ul>
+        </div>
     </div>
-    <div id="dateToDiv">
-        <label for="releaseDateTo" class="datepickerLabel">Date To:</label>
-        <input placeholder="enter end date" type="text" id="releaseDateTo" class="datepicker"/>
-    </div>
-    <div id="iteration">
-        <label for="iterationNo" id="iterationLabel">Iteration:</label>
-        <input placeholder="iteration (e.g. Trunk)" type="text" id="iterationNo"/>
-    </div>
-    <div id="path">
-        <label for="pathType" id="pathLabel">Path:</label>
-        <input placeholder="environment(e.g. Reed)" type="text" id="pathType"/>
-    </div>    
-    <div id="path">
-        <label for="depth" id="depthLabel">Checkins:</label>
-        <input placeholder="checkins(e.g. 100)" type="text" id="depth"/>
-    </div>
-    <div>
-        <button id="showMap">Show Map</button>
-        <button id="clearButton">Clear</button>  
-    </div>
-</section>
-<div id="clearButtonDiv">
-    
 </div>
 <div>
     <section id="infovis"></section>
 </div>
 
-<div id="log"></div>
+<footer>
+    <div id="log"></div>        
+</footer>
 
