@@ -23,18 +23,15 @@ namespace HeatMapWebApi
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //custom api route - removes need to prefix 'api' to route
+            //WARNING - could cause name collision
+            routes.MapHttpRoute("CustomApi", "{controller}/{id}", new { id = RouteParameter.Optional }
+                );
+
             routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new {id = RouteParameter.Optional}
-                );
-
-            //custom api route - removes need to prefix 'api' to route
-            //WARNING - could cause name collision
-            routes.MapHttpRoute(
-                name: "CustomApi",
-                routeTemplate: "{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional}
                 );
 
             routes.MapRoute(
