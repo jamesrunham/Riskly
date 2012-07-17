@@ -25,8 +25,7 @@ namespace HeatMapWebApi
 
             //custom api route - removes need to prefix 'api' to route
             //WARNING - could cause name collision
-            routes.MapHttpRoute("CustomApi", "{controller}/{id}", new { id = RouteParameter.Optional }
-                );
+            routes.MapHttpRoute("CustomApi", "{controller}/{id}", new { id = RouteParameter.Optional });
 
             routes.MapHttpRoute(
                 name: "DefaultApi",

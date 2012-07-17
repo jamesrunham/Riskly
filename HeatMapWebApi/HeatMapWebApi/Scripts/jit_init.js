@@ -1,9 +1,8 @@
 ﻿var jit = function() {};
 
  jit.initHT = function(container, dates, iterationType, path, depth) {
-    $.getJSON('/heatmap', { pathContains: path, iteration: iterationType, depth: depth }, function (response) {
+    $.getJSON('/riskly/heatmap', { pathContains: path, iteration: iterationType, depth: depth }, function (response) {
         var json = response;
-        console.log(response);
         //init Spacetree
         //Create a new ST instance
         var st = new $jit.ST({
@@ -19,7 +18,6 @@
             levelsToShow: 20,
             offsetX: 1101,
             offsetY: -600,
-
             //set node and edge styles
             //set overridable=true for styling individual
             //nodes or edges
@@ -39,7 +37,8 @@
                 type: 'bezier',
                 overridable: true,
                 lineWidth: 3,
-                epsilon: 10
+                epsilon: 10,
+                color: 'grey'
             },
 
            
@@ -82,7 +81,6 @@
 
                 node.data.$color = "#" + node.data.colourHex;
                 node.data.$dim = node.data.percentage;
-                console.log(node.data.percentage);
 
                 if (node.data.isFolder = true) {
                     node.data.$border = 200;
@@ -110,9 +108,10 @@
                 enable: true,
                 panning: true
             },
-            
-            onAfterCompute :  function (){
-                Log.write("Code changes between " + dates.dateFrom + ' - '  + dates.dateTo);  
+
+            onAfterCompute: function () {
+                $("#logWrapper").fadeIn('slow');                
+                Log.write("Code changes between " + '<br>' + dates.dateFrom + ' - '  + dates.dateTo);  
             }
 
         });
@@ -126,9 +125,9 @@
         st.onClick(st.root);
         //end
     });
-}
+};
 
-function Clear(domElements) {
+ function Clear(domElements) {
     var thisObj = this;
     thisObj.domElements = domElements;
     for (var i = 0; i < thisObj.domElements.length; i++) {
@@ -139,11 +138,11 @@ function Clear(domElements) {
 
 
 var initTree = function (container, dates, iterationType, path, depth) {
-    $.getJSON('/heatmap', { pathContains: path, iteration: iterationType, depth: depth }, function(response) {
+    $.getJSON('/heatmap', { pathContains: path, iteration: iterationType, depth: depth }, function (response) {
         var json = response;
 
         var ht = new $jit.Hypertree({
-        //id of the visualization container  
+            //id of the visualization container  
             injectInto: 'infovis',
             //canvas width and height  
             width: 3000,
@@ -158,17 +157,17 @@ var initTree = function (container, dates, iterationType, path, depth) {
                 lineWidth: 2,
                 color: "#088"
             },
-            onBeforeCompute: function(node) {
+            onBeforeCompute: function (node) {
                 Log.write("centering");
             },
             //Attach event handlers and add text to the  
             //labels. This method is only triggered on label  
             //creation  
-            onCreateLabel: function(domElement, node) {
+            onCreateLabel: function (domElement, node) {
                 domElement.innerHTML = node.name;
-                $jit.util.addEvent(domElement, 'click', function() {
+                $jit.util.addEvent(domElement, 'click', function () {
                     ht.onClick(node.id, {
-                        onComplete: function() {
+                        onComplete: function () {
                             ht.controller.onComplete();
                         }
                     });
@@ -176,7 +175,7 @@ var initTree = function (container, dates, iterationType, path, depth) {
             },
             //Change node styles when labels are placed  
             //or moved.  
-            onPlaceLabel: function(domElement, node) {
+            onPlaceLabel: function (domElement, node) {
                 var style = domElement.style;
                 style.display = '';
                 style.cursor = 'pointer';
@@ -197,7 +196,7 @@ var initTree = function (container, dates, iterationType, path, depth) {
                 style.left = (left - w / 2) + 'px';
             },
 
-            onComplete: function() {
+            onComplete: function () {
                 Log.write("done");
 
                 //Build the right column relations list.  
@@ -206,7 +205,7 @@ var initTree = function (container, dates, iterationType, path, depth) {
                 var node = ht.graph.getClosestNodeToOrigin("current");
                 var html = "<h4>" + node.name + "</h4><b>Connections:</b>";
                 html += "<ul>";
-                node.eachAdjacency(function(adj) {
+                node.eachAdjacency(function (adj) {
                     var child = adj.nodeTo;
                     if (child.data) {
                         var rel = (child.data.band == node.name) ? child.data.relation : node.data.relation;

@@ -251,7 +251,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57750</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://dev.tools.reed.co.uk/riskly</IISUrl>
+          <IISUrl>http://james.test:4567/riskly</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

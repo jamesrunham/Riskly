@@ -10,15 +10,34 @@
     text-decoration: none;
     color: #ffffff;
     padding: 21px;
-    font-family: ;
+    font-family: tahoma;
+}
+
+.masterHeader {
+    font-weight: bold;
 }
 
 .masterHeader:hover {
     text-decoration: none;
+    color: #ffffff;
 }
 
 #infovis {
    height: 2500px;
    width: 2000px;
-   margin: auto;    
+   margin: auto;
+    margin-top: -614px;
+    margin-left: 280px;
+}
+
+#log {
+    padding: 24px;
+    text-align: center;
+}
+
+#logWrapper {
+    margin-left: 680px;     
+    background-color: #F5F5F5;
+    width: 340px;
+    border-radius: 24px;
 }
