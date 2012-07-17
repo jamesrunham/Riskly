@@ -12,7 +12,7 @@
             <ul class="nav nav-list">
                 <li>
                     <label for="releaseDateFrom" class="datepickerLabel">Date From:</label>
-                    <input placeholder="start date" type="text" id="releaseDateFrom" class="datepicker"/>
+                    <input placeholder="start date" type="text" id="releaseDateFrom" class="datepicker form-search"/>
                 </li>
                 <li id="dateToDiv">
                     <label for="releaseDateTo" class="datepickerLabel">Date To:</label>
@@ -20,14 +20,14 @@
                 </li>
                 <li id="iteration">
                     <label for="iterationNo" id="iterationLabel">Iteration:</label>
-                    <input placeholder="iteration (e.g. Trunk)" type="text" id="iterationNo"/>
+                    <input placeholder="e.g. Trunk" type="text" id="iterationNo"/>
                 </li>
                 <li id="path">
                     <label for="pathType" id="pathLabel">Path:</label>
-                    <select id="pathType">
+                    <select id="pathType" class="dropdown">
                         <option>Reed</option>
                         <option>Recruiter</option>
-                        <option>Cv Builder</option>
+                        <option>CV Builder</option>
                         <option>Tools</option>
                         <option>Exchange</option>
                         <option>Courses</option>
@@ -35,10 +35,11 @@
                 </li>
                 <li>
                     <label for="depth" id="depthLabel">Checkins:</label>
-                    <input placeholder="checkins(e.g. 100)" type="text" id="depth"/>
+                    <div class="checkinSlider"></div>
+                    <input placeholder="e.g. 100" type="text" id="depth"/>
                 </li>
                 <li>
-                    <button id="showMap" class="btn"><i class="icon-warning-sign"></i> Show Map</button>
+                    <button id="showMap" class="btn"><i class="icon-play"></i> Show Map</button>
                     <button id="clearButton" class="btn"><i class="icon-trash"></i> Clear</button>  
                 </li>
             </ul>
@@ -49,7 +50,6 @@
 <div>
     <section id="infovis"></section>
 </div>
-
 <footer>
 </footer>
 

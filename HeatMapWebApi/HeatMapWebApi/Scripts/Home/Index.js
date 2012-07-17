@@ -1,13 +1,14 @@
 ﻿$(document).ready(function () {
+    $("#checkinSlider").slider();
+
     $('#clearButton').hide();
     $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy', showAnim: 'fade', prevText: '<<<', nextText: '>>>' });
     $("#logWrapper").hide();
-    
+
     $('#showMap').click(function () {
         if ($('#infovis').html != null)
             Clear(['infovis', 'log']);
         $("#logWrapper").hide();
-        
 
         var dates = { dateFrom: $('#releaseDateFrom').val(), dateTo: $('#releaseDateTo').val() };
         var iteration = $("#iterationNo").val() != "" ? $("#iterationNo").val() : "Trunk";

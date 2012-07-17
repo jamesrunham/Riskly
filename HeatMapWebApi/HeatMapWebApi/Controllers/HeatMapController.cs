@@ -12,6 +12,8 @@ namespace HeatMapWebApi.Controllers
 
         public NodeDto Get(string pathContains, string iteration, int depth)
         {
+            pathContains = pathContains.Replace(" ", "");
+            
             var nodes = NodeRepository.GetAllNodes(pathContains, iteration, depth);
 
             if(nodes == null)
