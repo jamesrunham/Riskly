@@ -35,8 +35,14 @@
                 </li>
                 <li>
                     <label for="depth" id="depthLabel">Checkins:</label>
-                    <div class="checkinSlider"></div>
-                    <input placeholder="e.g. 100" type="text" id="depth"/>
+                    <span id="checkinCount"></span>
+                    <div id="sliderItem">
+                        <div class="checkinSlider"></div>
+                        <span id="sliderMin">0</span>
+                        <span id="sliderMid">500</span>
+                        <span id="sliderMax">1000</span>
+                    </div>
+                  @*  <input placeholder="e.g. 100" type="text" id="depth"/>*@
                 </li>
                 <li>
                     <button id="showMap" class="btn"><i class="icon-play"></i> Show Map</button>

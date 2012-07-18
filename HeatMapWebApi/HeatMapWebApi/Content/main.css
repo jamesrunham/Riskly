@@ -66,3 +66,19 @@
     font-size: 15px;
 }
 
+#sliderItem {
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+#sliderMid {
+    margin-left: 78px;
+}
+
+#sliderMax {
+    margin-left: 58px;
+}
+
+#depthLabel {
+    display: inline;
+}

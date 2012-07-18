@@ -1,7 +1,7 @@
 ﻿var jit = function() {};
 
 jit.initHT = function (container, dates, iterationType, path, depth) {
-    $('.preloader').show();
+    $('.preloader').fadeIn('slow');
     $.getJSON('/riskly/heatmap', { pathContains: path, iteration: iterationType, depth: depth }, function (response) {
         var json = response;
         //init Spacetree
@@ -125,7 +125,7 @@ jit.initHT = function (container, dates, iterationType, path, depth) {
         //emulate a click on the root node.
         st.onClick(st.root);
         //end
-        $('.preloader').hide();
+        $('.preloader').fadeOut('slow');
     });
 };
 
