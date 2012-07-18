@@ -32,12 +32,11 @@
         //var depth = $("#depth").val() != "" ? $("#depth").val() : 100;
         var checkins = $(".checkinSlider").slider("option", "value");
         jit.initHT('infovis', dates, iteration, path, checkins);
-
-        $('#clearButton').show('fade');
     });
 
     $('#clearButton').click(function () {
         $('#clearButton').hide('fade');
+        $("#logWrapper").hide();
         Clear(['infovis']);
     });
 });

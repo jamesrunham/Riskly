@@ -126,6 +126,7 @@ jit.initHT = function (container, dates, iterationType, path, depth) {
         st.onClick(st.root);
         //end
         $('.preloader').fadeOut('slow');
+        $('#clearButton').show('fade');
     });
 };
 
