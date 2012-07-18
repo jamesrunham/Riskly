@@ -1,5 +1,4 @@
-﻿body 
-{
+﻿body {
     padding-top: 60px;
 }
 
@@ -29,6 +28,10 @@
     color: #ffffff;
     font-style: italic;
     font-weight: bold;
+}
+
+.ui-slider-handle {
+    z-index: 1;
 }
 
 #infovis {
