@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $("#checkinSlider").slider();
-
+    $(".preloader").hide();
     $('#clearButton').hide();
     $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy', showAnim: 'fade', prevText: '<<<', nextText: '>>>' });
     $("#logWrapper").hide();

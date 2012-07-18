@@ -1,6 +1,7 @@
 ﻿var jit = function() {};
 
- jit.initHT = function(container, dates, iterationType, path, depth) {
+jit.initHT = function (container, dates, iterationType, path, depth) {
+    $('.preloader').show();
     $.getJSON('/riskly/heatmap', { pathContains: path, iteration: iterationType, depth: depth }, function (response) {
         var json = response;
         //init Spacetree
@@ -41,8 +42,8 @@
                 color: 'grey'
             },
 
-           
-            Tree : {
+
+            Tree: {
                 orientation: "right",
                 subtreeOffset: 100,
                 siblingOffset: 200,
@@ -110,8 +111,8 @@
             },
 
             onAfterCompute: function () {
-                $("#logWrapper").fadeIn('slow');                
-                Log.write("Code changes between " + '<br>' + dates.dateFrom + ' - '  + dates.dateTo);  
+                $("#logWrapper").fadeIn('slow');
+                Log.write("Code changes between " + '<br>' + dates.dateFrom + ' - ' + dates.dateTo);
             }
 
         });
@@ -124,6 +125,7 @@
         //emulate a click on the root node.
         st.onClick(st.root);
         //end
+        $('.preloader').hide();
     });
 };
 

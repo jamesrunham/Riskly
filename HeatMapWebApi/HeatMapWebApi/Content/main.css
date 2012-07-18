@@ -22,6 +22,15 @@
     color: #ffffff;
 }
 
+.container p {
+    margin-left: -63px;
+    margin-top: -17px;
+    font-size: 20px;
+    color: #ffffff;
+    font-style: italic;
+    font-weight: bold;
+}
+
 #infovis {
    height: 2500px;
    width: 2000px;
@@ -45,5 +54,15 @@
 #headerImg {
     margin-left: -210px;
     margin-top: 10px;
+}
+
+.preloader {
+    margin-left: 730px;
+    margin-top: -254px;
+}
+
+.preloader p {
+    margin-left: 3px;
+    font-size: 15px;
 }
 

@@ -149,6 +149,8 @@
     <Content Include="Content\bootstrap\themes\images\glyphicons-halflings.png" />
     <Content Include="Content\bootstrap\themes\slate.css" />
     <Content Include="Content\bootstrap\themes\spacelab.css" />
+    <Content Include="Content\images\282.gif" />
+    <Content Include="Content\images\295.gif" />
     <Content Include="Content\images\header-logo.png" />
     <Content Include="Content\images\warning.png" />
     <Content Include="Content\LocalStyles.css" />
