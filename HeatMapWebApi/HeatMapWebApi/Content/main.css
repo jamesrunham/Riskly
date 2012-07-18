@@ -5,7 +5,7 @@
 
 .masterHeader {
     float: left;
-    margin-left: -20px;
+    margin-left: -187px;
     font-size: 30px;
     text-decoration: none;
     color: #ffffff;
@@ -43,6 +43,7 @@
 }
 
 #headerImg {
-    margin-left: -329px;
+    margin-left: -210px;
+    margin-top: 10px;
 }
 
